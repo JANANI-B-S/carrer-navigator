@@ -1,0 +1,66 @@
+
+.prediction-container {
+
+  
+    background: linear-gradient(135deg, #54d6f7, #8bcdcf);
+    padding: 50px;
+    margin-top: 80px;
+   max-height: 100;
+    text-align: center;
+    color: white;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    transition: 0.3s;
+}
+
+.tab.active, .tab:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.test-section, .manual-section {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.predict-btn, .choose-btn, .add-btn, .remove-btn {
+    background: #ffcc00;
+    color: black;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.predict-btn:hover, .choose-btn:hover, .add-btn:hover, .remove-btn:hover {
+    transform: scale(1.05);
+    background: #ffaa00;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

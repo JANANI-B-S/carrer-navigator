@@ -27,7 +27,9 @@ roles_list = ["Software Developer", "AI ML Engineer", "Data Scientist","Database
 
 
 
-
+@app.get("/all_roles")
+def get_all_roles():
+    return {"roles": roles_list}
 @app.post("/predict")
 def predict_role(user_input: SkillRatings):
     try:

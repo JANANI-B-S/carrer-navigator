@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Path from "./pages/Path";
 import Prediction from "./pages/Prediction";
+import Progress from "./pages/Progress";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App(){
@@ -20,6 +21,7 @@ function App(){
           <Route path="/home" element={<Home />} />
           <Route path="/prediction" element={<Prediction />} />
           <Route path="/path" element={<Path />} />
+          <Route path="/Progress" element={<Progress />} />
         </Routes>
       </Router>
     </GoogleOAuthProvider>

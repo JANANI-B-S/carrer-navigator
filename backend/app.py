@@ -1,11 +1,13 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 import joblib
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # Load dataset
 df = pd.read_csv(r"C:\Users\Admin\Desktop\CARRER NAVIGATOR\career-navigator\backend\dataset9000.csv")
@@ -56,6 +58,31 @@ y_pred = model_pipeline.predict(X_test)
 # Calculate accuracy
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Model Accuracy: {accuracy:.2f}")
+
+# Generate Classification Report
+report = classification_report(y_test, y_pred, target_names=label_encoder.classes_, output_dict=True)
+
+# Convert to DataFrame for visualization
+report_df = pd.DataFrame(report).transpose()
+
+# Plot Classification Report as a heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(report_df.iloc[:-1, :].T, annot=True, cmap="Blues", fmt=".2f")
+plt.title("Classification Report Heatmap")
+plt.xlabel("Metrics")
+plt.ylabel("Job Roles")
+plt.show()
+
+# Generate Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+# Plot Confusion Matrix
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=label_encoder.classes_, yticklabels=label_encoder.classes_)
+plt.title("Confusion Matrix")
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
+plt.show()
 
 # Save the trained model and encoders
 joblib.dump(model_pipeline, "career_predictor.pkl")

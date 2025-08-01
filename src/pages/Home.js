@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // Animation Library
+import { motion } from "framer-motion"; 
 
 import firstimage from "../assets/firstimage.png";
 const Home = () => {
@@ -33,10 +33,14 @@ const Home = () => {
     mainContent: {
       marginTop: "50px",
     },
+    imageContainer: {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "20px",
+    },
     image: {
       width: "80%",
       maxWidth: "500px",
-      marginTop: "20px",
       borderRadius: "12px",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
     },
@@ -76,7 +80,7 @@ const Home = () => {
       <div style={styles.navbar}>
         <span
           style={styles.navLink}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/home")}
           onMouseEnter={(e) => (e.target.style.color = "#ff4081")}
           onMouseLeave={(e) => (e.target.style.color = "white")}
         >
@@ -109,12 +113,14 @@ const Home = () => {
       >
         <h1>🚀 Welcome to Career Navigator</h1>
         <p>Your personalized AI-powered career guide to success.</p>
-        <motion.img
-          src={firstimage}
-          alt="Career Path"
-          style={styles.image}
-          whileHover={{ scale: 1.05 }}
-        />
+        <div style={styles.imageContainer}>
+          <motion.img
+            src={firstimage}
+            alt="Career Path"
+            style={styles.image}
+            whileHover={{ scale: 1.05 }}
+          />
+        </div>
       </motion.div>
 
       {/* Features Section */}
@@ -123,7 +129,7 @@ const Home = () => {
           style={styles.card}
           whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}
         >
-          <h3>📈 AI-Powered Prediction</h3>
+          <h3>📈<b> AI-Powered Prediction</b></h3>
           <p>Get AI recommendations for the best career paths.</p>
         </motion.div>
 
@@ -131,16 +137,16 @@ const Home = () => {
           style={styles.card}
           whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}
         >
-          <h3>📚 Personalized Learning</h3>
-          <p>Find courses, projects, and workshops tailored to your goal.</p>
+          <h3>📚 <b>Personalized Learning</b></h3>
+          <p>Find courses and projects tailored to your goal.</p>
         </motion.div>
 
         <motion.div
           style={styles.card}
           whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}
         >
-          <h3>📊 Track Your Progress</h3>
-          <p>Monitor your growth with real-time progress tracking.</p>
+          <h3>📊<b> Track Your Progress</b></h3>
+          <p>Monitor your growth with powerful visualizations.</p>
         </motion.div>
       </div>
 

@@ -11,7 +11,7 @@ const Prediction = () => {
     const styles = {
       container: {
         fontFamily: "Arial, sans-serif",
-        background: "linear-gradient(135deg,rgb(221, 233, 235),rgb(168, 226, 243))",
+        background: "linear-gradient(135deg,rgb(174, 217, 224),rgb(57, 167, 201))",
         minHeight: "100vh",
         color: "white",
         textAlign: "center",
@@ -70,6 +70,7 @@ const Prediction = () => {
         cursor: "pointer",
         transition: "background 0.3s ease",
       },
+      
     }
     const [ratings, setRatings] = useState({
         "Programming Skills": "", "Software Development": "", "AI ML": "",
@@ -142,7 +143,7 @@ const Prediction = () => {
             <div style={styles.navbar}>
         <span
           style={styles.navLink}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/home")}
           onMouseEnter={(e) => (e.target.style.color = "#ff4081")}
           onMouseLeave={(e) => (e.target.style.color = "white")}
         >
@@ -164,8 +165,9 @@ const Prediction = () => {
         >
           Path
         </span>
-      </div>
+    
      
+      </div>
       
       <div className="prediction-container">
             <h2 className="title">🚀 Career Navigator</h2>
@@ -180,41 +182,42 @@ const Prediction = () => {
             </div>
 
             {view === "test" && (
-                <div className="test-section">
-                    <h3 className="section-title">📊 Rate Your Skills</h3>
-                    <div className="skills-container">
-                        {Object.keys(ratings).map((skill) => (
-                            <div key={skill} className="skill-row">
-                                <label className="skill-label">{skill}: </label>
-                                <select className="skill-dropdown" value={ratings[skill]} onChange={(e) => handleRatingChange(skill, e.target.value)}>
-                                    <option value="">Skip</option>
-                                    <option value="0">Not Interested</option>
-                                    <option value="1">Poor</option>
-                                    <option value="2">Beginner</option>
-                                    <option value="3">Average</option>
-                                    <option value="4">Intermediate</option>
-                                    <option value="5">Excellent</option>
-                                </select>
-                            </div>
-                        ))}
-                    </div>
-                    <button className="predict-btn" onClick={handleSubmit}>🔮 Predict Jobs</button>
-
-                    {predictedRoles.length > 0 && !careerPath && (
-                        <div className="results">
-                            <h3 className="section-title">🏆 Top Career Matches:</h3>
-                            <ul className="role-list">
-                                {predictedRoles.map((role, index) => (
-                                    <li key={index} className="role-item">
-                                        {role} 
-                                        <button className="choose-btn" onClick={() => handleCareerChoice(role)}>✅ Choose</button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+    <div className="test-section">
+        <h3 className="section-title">📊 Rate Your Skills</h3>
+        <div className="skills-container">
+            {Object.keys(ratings).map((skill) => (
+                <div key={skill} className="skill-row">
+                    <label className="skill-label">{skill}</label>
+                    <select className="skill-dropdown" value={ratings[skill]} onChange={(e) => handleRatingChange(skill, e.target.value)}>
+                        <option value="">Skip</option>
+                        <option value="0">Not Interested</option>
+                        <option value="1">Poor</option>
+                        <option value="2">Beginner</option>
+                        <option value="3">Average</option>
+                        <option value="4">Intermediate</option>
+                        <option value="5">Excellent</option>
+                    </select>
                 </div>
-            )}
+            ))}
+        </div>
+        <button className="predict-btn" onClick={handleSubmit}>🔮 Predict Jobs</button>
+
+        {predictedRoles.length > 0 && !careerPath && (
+            <div className="results">
+                <h3 className="section-title">🏆 Top Career Matches:</h3>
+                <ul className="role-list">
+                    {predictedRoles.map((role, index) => (
+                        <li key={index} className="role-item">
+                            {role} 
+                            <button className="choose-btn" onClick={() => handleCareerChoice(role)}>✅ Choose</button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )}
+    </div>
+)}
+
 
             {view === "manual" && (
                 <div className="manual-section">
@@ -226,7 +229,7 @@ const Prediction = () => {
                         </div>
                     ) : (
                         <>
-                            <select className="role-select" value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)}>
+                            <select className="skill-label" value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)}>
                                 <option value="">Select a Role</option>
                                 {allRoles.map((role, index) => (
                                     <option key={index} value={role}>{role}</option>
@@ -240,7 +243,8 @@ const Prediction = () => {
                 </div>
             )}
 
-            <Path chosenRole={careerPath} />
+           
+
         </div>
         </div>
     );
